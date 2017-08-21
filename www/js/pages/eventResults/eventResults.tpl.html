@@ -1,0 +1,52 @@
+<ion-view view-title="Event Results">
+  <ion-header-bar>
+    <div class="bar bar-header bar-calm-900">
+      <div class="buttons buttons-left header-item">
+        <div class="left-buttons">
+          <button class="button back-button buttons no-text button-clear header-item" ng-click="tournament()">
+            <i class="icon ion-android-arrow-back"></i>
+          </button>
+        </div>
+      </div>
+      <div class="Tournament-title">{{::event.full_name}}</div>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <div ng-if="!event.results">
+      <h1 class="text-center">Results have not yet been posted</h1>
+    </div>
+    <div ng-if="!!event.results">
+      <div class="item animate-ripple" ng-if="!event.is_team">
+        <h2>{{::event.close_of_reg | unlocalizedMoment: 'MMMM D, h:mm A'}}</h2>
+
+        <div class="item item-divider">
+          {{::event.results.length}} fencers
+        </div>
+        <div ng-if="event.results != undefined" class="item" ng-repeat="result in event.results | orderBy: 'place'"
+             ng-class-even="'EventResults-evenItem'">
+          <span>{{::$index + 1}}) {{::result.competitor.first_name}} {{::result.competitor.last_name}}</span>
+          <span class="item-note">
+            {{::result.rating_then | rating}} <span ng-if="result.rating_earned !== ''">
+            <i class="ion-arrow-right-c"></i> {{::result.rating_earned | rating}}</span>
+          </span>
+        </div>
+      </div>
+      <div ng-if="event.is_team">
+        <h2>{{::event.close_of_reg | unlocalizedMoment: 'MMMM D, h:mm A'}}</h2>
+
+        <div class="item animate-ripple">
+          <span class="EventResults-teamAmount">{{::event.results.length}} teams</span>
+          <div ng-repeat="team in event.results | orderBy: 'place'">
+            <div class="padding item item-divider">
+              <span class="EventResults-teamName">{{::team.place}}) {{::team.competitor.name}}</span>
+              <span class="item-note" mf-full-name-flash="{{::team.club.name}}">{{::team.club.initials}}</span>
+            </div>
+            <div class="item" ng-repeat="fencer in team.competitor.fencers" ng-class-even="'EventResults-evenItem'">
+              <span>{{::fencer.first_name}} {{::fencer.last_name}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

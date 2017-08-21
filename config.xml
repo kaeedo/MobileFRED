@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget xmlns:cdv="http://cordova.apache.org/ns/1.0" id="com.ionicframework.mobilefred524983" version="1.0.2"
+        xmlns="http://www.w3.org/ns/widgets">
+    <name>MobileFRED</name>
+    <description>
+		View upcoming fencing tournaments that have been posted on AskFRED. Also view results of previous tournaments.
+	</description>
+    <author email="kai.ito@gmail.com">
+		Kai Ito
+	</author>
+    <icon src="resources/android/icon/drawable-xhdpi-icon.png"/>
+    <platform name="android">
+        <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png"/>
+        <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png"/>
+        <icon density="hdpi" src="resources/android/icon/drawable-hdpi-icon.png"/>
+        <icon density="xhdpi" src="resources/android/icon/drawable-xhdpi-icon.png"/>
+        <icon density="xxhdpi" src="resources/android/icon/drawable-xxhdpi-icon.png"/>
+        <icon density="xxxhdpi" src="resources/android/icon/drawable-xxxhdpi-icon.png"/>
+    </platform>
+    <content src="index.html"/>
+    <access origin="*"/>
+    <preference name="webviewbounce" value="false"/>
+    <preference name="UIWebViewBounce" value="false"/>
+    <preference name="DisallowOverscroll" value="true"/>
+    <preference name="BackupWebStorage" value="none"/>
+    <feature name="StatusBar">
+        <param name="ios-package" onload="true" value="CDVStatusBar"/>
+        <param name="android-package" value="uk.co.workingedge.phonegap.plugin.LaunchNavigator"/>
+    </feature>
+    <feature name="Calendar">
+        <param name="android-package" value="nl.xservices.plugins.Calendar"/>
+    </feature>
+    <plugin name="cordova-plugin-calendar" spec="~4.4.7"/>
+    <allow-navigation href="https://*/*"/>
+</widget>

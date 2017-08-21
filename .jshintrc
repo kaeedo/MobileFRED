@@ -1,0 +1,10 @@
+{
+    "strict": true,
+    "globals": {
+        "angular": false,
+        "moment": false,
+        "describe": false,
+        "cordova": false,
+        "analytics": false
+    }
+}

@@ -1,0 +1,32 @@
+.Search-headerBar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Search-title {
+  margin-left: 1em;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 10em;
+}
+
+.platform-android {
+  .SearchPopover-view {
+    margin-top: 0;
+    height: 160px;
+  }
+}
+
+.SearchPopover-resultsItem {
+  padding: 1px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.Search-dateRangePicker {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-input input.Search-datePicker {
+  width: 9.5em;
+}

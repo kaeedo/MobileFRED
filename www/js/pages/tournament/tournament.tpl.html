@@ -1,0 +1,66 @@
+<ion-view view-title="Tournament">
+  <ion-header-bar>
+    <div class="Tournament-headerBar bar bar-header bar-calm-900">
+      <div class="buttons buttons-left header-item">
+        <div class="left-buttons">
+          <button class="button back-button buttons no-text button-clear header-item" ng-click="upcoming()">
+            <i class="icon ion-android-arrow-back"></i>
+          </button>
+        </div>
+      </div>
+      <div class="Tournament-title">{{::tournament.name}}</div>
+    </div>
+  </ion-header-bar>
+  <button ng-if="searchUpcoming"
+          ng-click="addToCalendar()"
+          class="button button-fab button-calm icon ion-calendar button-fab-bottom-right"></button>
+  <ion-content>
+    <div class="item item-text-wrap">
+      <div class="Tournament-basicDetails">
+        <span class="Tournament-date">
+					{{::tournament.start_date | date: 'EEEE, MMM d'}}{{::tournament.end_date | date: "' - 'EEEE, MMM d"}}
+				</span>
+        <a ng-show="searchUpcoming" href="#" ng-click="preregister(tournament.id)"
+           class="Tournament-preregister button-small button button-balanced">Preregister</a>
+      </div>
+      <div class="Tournament-address"
+           ng-click="navigate(tournament.venue.address + ',' + tournament.venue.city + ','+  tournament.venue.state)">
+        <a href="#" class="Tournament-link">
+          <div>{{::tournament.venue.name}}</div>
+          <div>{{::tournament.venue.address}}</div>
+          <div>{{::tournament.venue.city}}, {{::tournament.venue.state}}, {{::tournament.venue.zip}}</div>
+        </a>
+        <div class="Tournament-navigate">
+          <i class="ion-navigate"></i>
+        </div>
+      </div>
+      <span ng-bind-html="(tournament.comments | linky) | hrefToJS"></span>
+    </div>
+    <div class="Tournament-divider item item-divider">
+      Events
+    </div>
+    <div class="item">
+      <div ng-if="days.length > 0" ng-repeat="day in days | orderBy: 'close_of_reg'">
+        <div class="Tournament-eventDay item item-divider">{{(day.close_of_reg | unlocalizedMoment: 'dddd, MMM
+          D') || (tournament.start_date | date: 'EEEE, MMM d')}}
+        </div>
+        <a class="item"
+           ng-repeat="event in tournament.events | filter:sameDay(day.close_of_reg || day.prereg_close) | orderBy: 'close_of_reg'"
+           ng-click="eventDetails(event.id)" ng-class-odd="'Tournament-eventOdd'">
+          {{::event.full_name}}
+          <span class="item-note">{{::event.close_of_reg | unlocalizedMoment: 'h:mm A'}}</span>
+        </a>
+      </div>
+      <div ng-if="days.length === 0">
+        No events have been posted yet
+      </div>
+    </div>
+
+    <div class="Tournament-divider item item-divider">
+      More Info
+    </div>
+    <div class="item item-text-wrap">
+      <pre ng-bind-html="(tournament.more_info | linky) | hrefToJS"></pre>
+    </div>
+  </ion-content>
+</ion-view>

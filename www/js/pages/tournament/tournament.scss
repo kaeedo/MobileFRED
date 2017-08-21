@@ -1,0 +1,56 @@
+.Tournament-title {
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 20px;
+}
+
+.Tournament-basicDetails {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Tournament-date {
+  line-height: 36px;
+  font-size: 18px;
+  max-width: 9em;
+}
+
+.Tournament-preregister {
+  line-height: 36px;
+}
+
+.Tournament-address {
+  margin-top: 1em;
+  margin-bottom: 2em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Tournament-link {
+  text-decoration: none;
+}
+
+.Tournament-navigate {
+  font-size: 42px;
+  margin-right: 1em;
+  margin-top: 0.25em;
+}
+
+.Tournament-divider.item.item-divider {
+  font-weight: 500;
+  color: #000;
+  font-size: 18px;
+}
+
+.Tournament-eventOdd.item {
+  background-color: #f4f4f4;
+}
+
+.Tournament-eventDay.item.item-divider {
+  font-weight: normal;
+  color: #000;
+}
+
+.Tournament-headerBar {
+  height: 50px;
+}

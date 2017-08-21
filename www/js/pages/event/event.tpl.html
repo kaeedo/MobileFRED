@@ -1,0 +1,46 @@
+<ion-view view-title="Event">
+  <ion-header-bar>
+    <div class="bar bar-header bar-calm-900">
+      <div class="buttons buttons-left header-item">
+        <div class="left-buttons">
+          <button class="button back-button buttons no-text button-clear header-item" ng-click="tournament()">
+            <i class="icon ion-android-arrow-back"></i>
+          </button>
+        </div>
+      </div>
+      <div class="Tournament-title">{{::event.full_name}}</div>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <div class="item animate-ripple" ng-if="!event.is_team">
+      <h2>{{::event.close_of_reg | unlocalizedMoment: 'MMMM D, h:mm A'}}</h2>
+
+      <div class="item item-divider">
+        {{::event.prereg_count}} fencers
+        <span class="item-note"
+              ng-if="event.rating_prediction !== ''">Rating Prediction: {{::event.rating_prediction}}</span>
+      </div>
+      <div class="item" ng-repeat="fencer in event.preregs | orderBy: 'competitor.first_name'"
+           ng-class-even="'Event-evenItem'">
+        <span>{{::fencer.competitor.first_name}} {{::fencer.competitor.last_name}}</span>
+        <span class="item-note">{{::fencer.rating | rating}}</span>
+      </div>
+    </div>
+    <div ng-if="event.is_team">
+      <h2>{{::event.close_of_reg | unlocalizedMoment: 'MMMM D, h:mm A'}}</h2>
+
+      <div class="item animate-ripple">
+        <span class="Event-teamAmount">{{::event.prereg_count}} teams</span>
+        <div ng-repeat="team in event.preregs | orderBy: 'competitor.name'">
+          <div class="padding item item-divider">
+            <span class="Event-teamName">{{::team.competitor.name}}</span>
+            <span class="item-note" mf-full-name-flash="{{::team.club.name}}">{{::team.club.initials}}</span>
+          </div>
+          <div class="item" ng-repeat="fencer in team.competitor.fencers" ng-class-even="'Event-evenItem'">
+            <span>{{::fencer.first_name}} {{::fencer.last_name}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

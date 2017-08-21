@@ -1,0 +1,125 @@
+<ion-view cache-view="false">
+  <ion-header-bar>
+    <div class="Search-headerBar bar bar-header bar-calm-900">
+      <div class="Search-title">{{searchUpcoming ? 'Search Upcoming' : 'Search Results'}}</div>
+      <div class="buttons buttons-right header-item">
+        <span class="right-buttons">
+          <button class="button button-icon button-clear ion-android-more-vertical"
+                  ng-click="popover.show($event)"></button>
+        </span>
+      </div>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list">
+      <label class="item item-input">
+        <input type="text" placeholder="Tournament Name" ng-model="$parent.name">
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Division
+        </div>
+        <select ng-model="$parent.division">
+          <option value="">All Divisions</option>
+          <option value="54">Alabama</option>
+          <option value="13">Alaska</option>
+          <option value="46">Arizona</option>
+          <option value="63">Ark-La-Miss</option>
+          <option value="47">Border Texas</option>
+          <option value="25">Capitol</option>
+          <option value="3">Central California</option>
+          <option value="55">Central Florida</option>
+          <option value="26">Central Pennsylvania</option>
+          <option value="48">Colorado</option>
+          <option value="18">Columbus</option>
+          <option value="39">Connecticut</option>
+          <option value="56">Gateway Florida</option>
+          <option value="57">Georgia</option>
+          <option value="58">Gold Coast Florida</option>
+          <option value="82">Green Mountain</option>
+          <option value="64">Gulf Coast</option>
+          <option value="27">Harrisburg</option>
+          <option value="15">Hawaii</option>
+          <option value="40">Hudson-Berkshire</option>
+          <option value="33">Illinois</option>
+          <option value="19">Indiana</option>
+          <option value="2">Inland Empire</option>
+          <option value="34">Iowa</option>
+          <option value="49">Kansas</option>
+          <option value="22">Kentucky</option>
+          <option value="41">Long Island</option>
+          <option value="65">Louisiana</option>
+          <option value="28">Maryland</option>
+          <option value="24">Metropolitan NYC</option>
+          <option value="20">Michigan</option>
+          <option value="35">Minnesota</option>
+          <option value="4">Mountain Valley</option>
+          <option value="69">National</option>
+          <option value="50">Nebraska-South Dakota</option>
+          <option value="14">Nevada</option>
+          <option value="42">New England</option>
+          <option value="29">New Jersey</option>
+          <option value="51">New Mexico</option>
+          <option value="59">North Carolina</option>
+          <option value="5">North Coast</option>
+          <option value="66">North Texas</option>
+          <option value="43">Northeast</option>
+          <option value="294">Northeast Pennsylvania</option>
+          <option value="6">Northern California</option>
+          <option value="21">Northern Ohio</option>
+          <option value="67">Oklahoma</option>
+          <option value="7">Orange Coast</option>
+          <option value="11">Oregon</option>
+          <option value="30">Philadelphia</option>
+          <option value="52">Plains Texas</option>
+          <option value="8">San Bernardino</option>
+          <option value="9">San Diego</option>
+          <option value="60">South Carolina</option>
+          <option value="31">South Jersey</option>
+          <option value="68">South Texas</option>
+          <option value="10">Southern California</option>
+          <option value="23">Southwest Ohio</option>
+          <option value="36">St. Louis</option>
+          <option value="61">Tennessee</option>
+          <option value="12">Utah-Southern Idaho</option>
+          <option value="62">Virginia</option>
+          <option value="44">Westchester-Rockland</option>
+          <option value="45">Western New York</option>
+          <option value="32">Western Pennsylvania</option>
+          <option value="1">Western Washington</option>
+          <option value="37">Wisconsin</option>
+          <option value="53">Wyoming</option>
+        </select>
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Miles from my location
+        </div>
+        <select ng-model="$parent.miles">
+          <option value="">Select</option>
+          <option value="50">50 Miles</option>
+          <option value="100">100 Miles</option>
+          <option value="150">150 Miles</option>
+          <option value="200">200 Miles</option>
+          <option value="250">250 Miles</option>
+          <option value="300">300 Miles</option>
+        </select>
+      </label>
+      <div class="Search-dateRangePicker">
+        <label class="item item-input">
+          <span class="input-label" ng-show="!$parent.dateRange.startDate">Start Date</span>
+          <input type="date" ng-model="$parent.dateRange.startDate" class="Search-datePicker"/>
+        </label>
+        <label class="item item-input">
+          <span class="input-label" ng-show="!$parent.dateRange.endDate">End Date</span>
+          <input type="date" ng-model="$parent.dateRange.endDate" class="Search-datePicker"/>
+        </label>
+      </div>
+      <div class="Search-button">
+        <button class="button button-block button-calm button-flat ink-dark" ink-color="#9DEAFF" ng-click="search()">
+          {{searchUpcoming ? 'Search Upcoming' : 'Search Results'}}
+        </button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

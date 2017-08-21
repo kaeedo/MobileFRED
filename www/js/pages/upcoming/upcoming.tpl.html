@@ -1,0 +1,27 @@
+<ion-view cache-view="false">
+  <ion-header-bar>
+    <div class="bar bar-header bar-calm-900">
+      <div class="buttons buttons-left header-item">
+        <span class="left-buttons">
+					<button class="button back-button buttons no-text button-clear header-item" ng-click="search()">
+            <i class="icon ion-android-arrow-back"></i>
+          </button>
+        </span>
+      </div>
+      <div class="Upcoming-title">{{::searchUpcoming ? 'Upcoming' : 'Results'}}</div>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <ion-list class="Upcoming-list animate-ripple">
+      <ion-item class="Upcoming-item " ng-repeat="tournament in tournaments | filter:{is_visible: true}"
+                ng-class-even="'Upcoming-evenItem'">
+        <a class="Upcoming-itemLink " href="javascript:void(0); " ng-click="tournamentDetails(tournament.id) ">
+          <span class="Upcoming-tournamentName ">{{::tournament.name}}</span>
+          <span class="Upcoming-date ">{{::tournament.start_date | date: 'MMM d'}}{{::tournament.end_date | date: ' - MMM d'}}</span>
+        </a>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll ng-if="!end " on-infinite="loadMore() " distance="1% ">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,39 @@
+.Upcoming-title {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.Upcoming-list {
+  color: #000;
+}
+
+.list > .item.Upcoming-item {
+  margin-right: 1em;
+  margin-left: 1em;
+  width: inherit;
+  border: 1px solid #bbb;
+}
+
+.list > .Upcoming-evenItem {
+  background-color: #ededed;
+}
+
+.Upcoming-itemLink {
+  color: #000;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Upcoming-date {
+  float: right;
+  color: #222;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.Upcoming-tournamentName {
+  display: block;
+  text-overflow: ellipsis;
+  overflow: auto;
+}
